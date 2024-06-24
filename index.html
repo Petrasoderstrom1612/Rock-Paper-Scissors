@@ -13,13 +13,16 @@
     <div class="center">
         <div>
             <button id="play-el" class="pretty-button" onclick="startGame()">PLAY</button>
-            <button onclick="playAgain()">PLAY AGAIN</button>
-            <p>Score</p>
-             <p><span id="player1-points-el"></span><span id="semicolon-points-id"></span><span id="player2-points-el"></span></p>
+            <button class="pretty-button hide-first" onclick="playAgain()">PLAY AGAIN</button>
         </div>
         
-</div>
-    <div class="both-players hide">
+    </div>
+    <div class="hide">
+        <div class="score">
+        <p>Score</p>
+         <p><span id="player1-points-el"></span><span id="semicolon-points-id"></span><span id="player2-points-el"></span></p>
+        </div>
+        <div class="both-players">
         <div>
             <h2>PLAYER 1</h2>
             <div id="choice-el" class="choice">
@@ -34,6 +37,7 @@
             <div id="hand-elPlayer2"></div>
         </div>
         <div id="result-image-el"></div>
+        </div>
     </div>
     <script src="index.js"></script>
 </body>

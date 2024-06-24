@@ -5,6 +5,7 @@ let paperEl = document.getElementById("paper-el");
 let scissorsEl = document.getElementById("scissors-el");
 let choiceEl = document.getElementById("choice-el");
 let hideEl = document.querySelector(".hide");
+let hideFirstEl = document.querySelector(".hide-first");
 let player1PointsEl = document.getElementById("player1-points-el");
 let player2PointsEl = document.getElementById("player2-points-el");
 let semicolonPointsId = document.getElementById("semicolon-points-id");
@@ -92,7 +93,8 @@ function defineWinner() {
     semicolonPointsId.innerHTML = " : ";
     player1PointsEl.innerHTML = player1Points;
     player2PointsEl.innerHTML = player2Points;
-    playEl.classList.remove("hide");
+    // playEl.classList.remove("hide");
+    hideFirstEl.classList.remove("hide-first")
 }
 
 function playAgain() {

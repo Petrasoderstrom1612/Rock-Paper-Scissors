@@ -15,12 +15,23 @@ h1{
     text-align: center;
 }
 
+.score{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .both-players{
     display: flex;
     justify-content: space-evenly;
 }
 
 .hide{
+    display: none !important;
+}
+
+.hide-first{
     display: none !important;
 }
 
