@@ -6,6 +6,7 @@ let scissorsEl = document.getElementById("scissors-el");
 let choiceEl = document.getElementById("choice-el");
 let hideEl = document.querySelector(".hide");
 let hideFirstEl = document.querySelector(".hide-first");
+let scoreEl = document.getElementById("score-el")
 let player1PointsEl = document.getElementById("player1-points-el");
 let player2PointsEl = document.getElementById("player2-points-el");
 let semicolonPointsId = document.getElementById("semicolon-points-id");
@@ -13,7 +14,8 @@ let playEl = document.getElementById("play-el");
 
 let hands = ["Rock", "Paper", "Scissors"];
 
-// Initial setup of event listeners
+
+// PLAYER 1
 rockEl.addEventListener("click", () => {
     selectedHand = hands[0];
     showHand(selectedHand);
@@ -29,8 +31,6 @@ scissorsEl.addEventListener("click", () => {
     showHand(selectedHand);
 });
 
-// PLAYER 1
-
 rockEl.innerHTML = `<button style="border:none;background-color: #9B97A2;"><img alt=${hands[0]} src="./images/${hands[0]}.png"></button>`;
 paperEl.innerHTML = `<button style="border:none;background-color: #9B97A2;"><img alt=${hands[1]} src="./images/${hands[1]}.png"></button>`;
 scissorsEl.innerHTML = `<button style="border:none;background-color: #9B97A2;"><img alt=${hands[2]} src="./images/${hands[2]}.png"></button>`;
@@ -40,19 +40,19 @@ let player1choice;
 let player2choice;
 
 function startGame() {
-    hideEl.classList.remove("hide");
-    playEl.classList.add("hide");
-    choiceEl.classList.remove("hide");
+    hideEl.classList.remove("hide"); //show game plan
+    playEl.classList.add("hide"); //hide play button
+    choiceEl.classList.remove("hide"); //show hand choices
     handEl.innerHTML = "";
     handElPlayer2.innerHTML = "";
     resultImageEl.innerHTML = "";
 }
 
 function showHand(selectedHand) {
-    choiceEl.classList.add("hide");
+    choiceEl.classList.add("hide"); //hide hand choices
     player1choice = selectedHand;
     handEl.innerHTML = `<img alt=${player1choice} src="./images/${player1choice}.png">`;
-    showHandPlayer2();
+    showHandPlayer2(); //Activating player 2 computer to play
     defineWinner();
 }
 
@@ -69,32 +69,39 @@ function showHandPlayer2() {
 
 // SUMMARY OF POINTS
 let resultImageEl = document.getElementById("result-image-el");
+let player1DivEl = document.getElementById("player-1-div-el")
+let player2DivEl = document.getElementById("player-2-div-el")
 let player1Points = 0;
 let player2Points = 0;
 
 function defineWinner() {
     // TIE
     if ((player1choice === "Rock" && player2choice === "Rock") || (player1choice === "Paper" && player2choice === "Paper") || (player1choice === "Scissors" && player2choice === "Scissors")) {
-        console.log("It's a tie");
-        player1Points += 0;
-        player2Points += 0;
+
     }
     // PLAYER 1 WINS
     else if ((player1choice === "Rock" && player2choice === "Scissors") || (player1choice === "Paper" && player2choice === "Rock") || (player1choice === "Scissors" && player2choice === "Paper")) {
-        console.log("Player 1 wins");
         player1Points++;
     }
     // Player 2 WINS
     else {
-        console.log("Player 2 wins");
         player2Points++;
     }
 
+    scoreEl.innerText = "Score"
     semicolonPointsId.innerHTML = " : ";
     player1PointsEl.innerHTML = player1Points;
     player2PointsEl.innerHTML = player2Points;
-    // playEl.classList.remove("hide");
-    hideFirstEl.classList.remove("hide-first")
+    hideFirstEl.classList.remove("hide-first") //show play again button
+
+    if (((player1choice === "Rock" && player2choice === "Scissors") || (player1choice === "Scissors" && player2choice === "Rock"))) {
+        resultImageEl.innerHTML = `<h2>RESULT</h2><p>Rock wins over Scissors</p><img alt="Rock wins over Scissors" src="./images/scissors-lost.png"/>`;
+    } else if (((player1choice === "Paper" && player2choice === "Rock") || (player1choice === "Rock" && player2choice === "Paper"))) {
+        resultImageEl.innerHTML = `<h2>RESULT</h2><p>Paper wins over Rock</p><img alt="Paper wins over Rock" src="./images/rock-lost.png"/>`;
+    } else if (((player1choice === "Scissors" && player2choice === "Paper") || (player1choice === "Paper" && player2choice === "Scissors"))) {
+        resultImageEl.innerHTML = `<h2>RESULT</h2><p>Scissors win over Paper</p><img alt="Scissors win over Paper" src="./images/paper-lost.png"/>`;
+    }
+    
 }
 
 function playAgain() {

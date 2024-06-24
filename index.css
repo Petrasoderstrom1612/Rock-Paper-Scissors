@@ -57,3 +57,17 @@ h1{
 .choice{
     display: flex;
 }
+
+.result{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.winner-background{
+    background-color: green;;
+}
+
+.looser-background{
+    background-color: red;
+}
