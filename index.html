@@ -1,13 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
     <title>Rock Paper Scissors</title>
 </head>
+
 <body>
-    <div><p id="hand-el">Hand</p></div>
-    <button onclick="showHand()">CLICK</button>
+    <h1>Rock, paper, scissors</h1>
+    <div class="center">
+    <button onclick="showHand()">SHOW HAND</button>
+</div>
+    <div class="both-players">
+        <div>
+            <h2>PLAYER 1</h2>
+            <div id="hand-el"></div>
+        </div>
+        <div>
+            <h2>PLAYER 2</h2>
+            <div id="hand-elPlayer2"></div>
+        </div>
+    </div>
     <script src="index.js"></script>
 </body>
+
 </html>

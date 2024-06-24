@@ -1,0 +1,19 @@
+body{
+    background-color: #9B97A2;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h1{
+    text-align: center;
+}
+
+
+.center{
+    display: flex;
+    justify-content: center;
+}
+
+.both-players{
+    display: flex;
+    justify-content: space-evenly;
+}
