@@ -7,8 +7,6 @@ let choiceEl = document.getElementById("choice-el");
 let hideEl = document.querySelector(".hide");
 let hideFirstEl = document.querySelector(".hide-first");
 let scoreEl = document.getElementById("score-el")
-let player1PointsEl = document.getElementById("player1-points-el");
-let player2PointsEl = document.getElementById("player2-points-el");
 let semicolonPointsId = document.getElementById("semicolon-points-id");
 let playEl = document.getElementById("play-el");
 
@@ -71,6 +69,8 @@ function showHandPlayer2() {
 let resultImageEl = document.getElementById("result-image-el");
 let player1DivEl = document.querySelector(".player-1-div-el")
 let player2DivEl = document.querySelector(".player-2-div-el")
+let player1PointsEl = document.getElementById("player1-points-el");
+let player2PointsEl = document.getElementById("player2-points-el");
 let player1Points = 0;
 let player2Points = 0;
 
@@ -82,12 +82,14 @@ function defineWinner() {
     // PLAYER 1 WINS
     else if ((player1choice === "Rock" && player2choice === "Scissors") || (player1choice === "Paper" && player2choice === "Rock") || (player1choice === "Scissors" && player2choice === "Paper")) {
         player1Points++;
+        player1PointsEl.classList.add("green")
         player1DivEl.classList.add("winner-background")
         player2DivEl.classList.add("looser-background")
     }
     // Player 2 WINS
     else {
         player2Points++;
+        player2PointsEl.classList.add("green")
         player2DivEl.classList.add("winner-background")
         player1DivEl.classList.add("looser-background")
     }
@@ -112,6 +114,8 @@ function playAgain() {
     selectedHand = null;
     player1choice = null;
     player2choice = null;
+    player1PointsEl.classList.remove("green")
+    player2PointsEl.classList.remove("green")
     player1DivEl.classList.remove("winner-background", "looser-background");
     player2DivEl.classList.remove("winner-background", "looser-background");
     startGame(); // Reset game state
