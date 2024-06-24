@@ -69,8 +69,8 @@ function showHandPlayer2() {
 
 // SUMMARY OF POINTS
 let resultImageEl = document.getElementById("result-image-el");
-let player1DivEl = document.getElementById("player-1-div-el")
-let player2DivEl = document.getElementById("player-2-div-el")
+let player1DivEl = document.querySelector(".player-1-div-el")
+let player2DivEl = document.querySelector(".player-2-div-el")
 let player1Points = 0;
 let player2Points = 0;
 
@@ -82,10 +82,14 @@ function defineWinner() {
     // PLAYER 1 WINS
     else if ((player1choice === "Rock" && player2choice === "Scissors") || (player1choice === "Paper" && player2choice === "Rock") || (player1choice === "Scissors" && player2choice === "Paper")) {
         player1Points++;
+        player1DivEl.classList.add("winner-background")
+        player2DivEl.classList.add("looser-background")
     }
     // Player 2 WINS
     else {
         player2Points++;
+        player2DivEl.classList.add("winner-background")
+        player1DivEl.classList.add("looser-background")
     }
 
     scoreEl.innerText = "Score"
@@ -108,5 +112,7 @@ function playAgain() {
     selectedHand = null;
     player1choice = null;
     player2choice = null;
+    player1DivEl.classList.remove("winner-background", "looser-background");
+    player2DivEl.classList.remove("winner-background", "looser-background");
     startGame(); // Reset game state
 }
