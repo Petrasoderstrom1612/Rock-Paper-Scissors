@@ -10,11 +10,21 @@ let scoreEl = document.getElementById("score-el")
 let semicolonPointsId = document.getElementById("semicolon-points-id");
 let playEl = document.getElementById("play-el");
 let displayNumberEl = document.getElementById("display-number-el")
+let resultImageEl = document.getElementById("result-image-el");
+let player1DivEl = document.querySelector(".player-1-div-el")
+let player2DivEl = document.querySelector(".player-2-div-el")
+let player1PointsEl = document.getElementById("player1-points-el");
+let player2PointsEl = document.getElementById("player2-points-el");
 let userNumberEl = document.getElementById("user-number-el")
 let victoriesLimitEl = document.getElementById("victories-limit-el")
+let victoriesEl = document.getElementById("victories-el")
+let gamePlanEl = document.getElementById("game-plan-el")
+let winnerNrEl = document.getElementById("winner-nr-el")
+let winnerGameplanEl = document.getElementById("winner-gameplan-el")
 
 let hands = ["Rock", "Paper", "Scissors"];
-
+let player1Points = 0;
+let player2Points = 0;
 
 // PLAYER 1
 rockEl.addEventListener("click", () => {
@@ -41,6 +51,7 @@ let player1choice;
 let player2choice;
 let victoriesLimit
 
+//select the number of victories needed to win
 function saveNumber() {
     let userNumber = userNumberEl.value;
     victoriesLimit = parseInt(userNumber);
@@ -48,6 +59,7 @@ function saveNumber() {
     displayNumberEl.innerText = victoriesLimit;
 }
 
+//player 1 chooses
 function startGame() {
     victoriesLimitEl.classList.add("hide") //hide # of rounds choice
     playEl.classList.add("hide"); //hide play button
@@ -77,14 +89,6 @@ function showHandPlayer2() {
     handElPlayer2.innerHTML = `<img alt=${player2choice} src="./images/${player2choice}.png">`;
 }
 
-// SUMMARY OF POINTS
-let resultImageEl = document.getElementById("result-image-el");
-let player1DivEl = document.querySelector(".player-1-div-el")
-let player2DivEl = document.querySelector(".player-2-div-el")
-let player1PointsEl = document.getElementById("player1-points-el");
-let player2PointsEl = document.getElementById("player2-points-el");
-let player1Points = 0;
-let player2Points = 0;
 
 function defineWinner() {
 // INDIVIDUAL GAME
@@ -132,20 +136,28 @@ if (((player1choice === "Rock" && player2choice === "Scissors") || (player1choic
 }
 
 if (victoriesLimit === player1Points || victoriesLimit === player2Points){
-gameOver()
-}
+  gameOver()
+  } 
 }
 
 
 function gameOver(){
-    console.log("finished")
-    
+    victoriesEl.classList.add("hide");
+    gamePlanEl.classList.add("hide")
+    winnerGameplanEl.classList.remove("hide")
+    if(player1Points > player2Points){
+        winnerNrEl.innerHTML = "1"
+    } else {
+        winnerNrEl.innerHTML = "2"
+    }
 }
 
 function playAgain() {
     selectedHand = null;
     player1choice = null;
     player2choice = null;
+    // victoriesEl.classList.remove("hide");
+    // gamePlanEl.classList.remove("hide")
     player1DivEl.classList.remove("winner-background", "looser-background");
     player2DivEl.classList.remove("winner-background", "looser-background");
     startGame(); // Reset game state

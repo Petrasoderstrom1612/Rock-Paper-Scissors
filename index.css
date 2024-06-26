@@ -61,6 +61,25 @@ p#score-el{
     background-color: #0a8ce4; 
 }
 
+.modern-input {
+    font-family: 'Arial', sans-serif; 
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px; 
+    font-size: 16px; 
+    outline: none; 
+    transition: border-color 0.3s ease; 
+
+    ::placeholder {
+        color: #999; 
+        font-style: italic;
+    }
+
+    &:hover, &:focus {
+        border-color: #66afe9; 
+    }
+}
+
 .choice{
     display: flex;
 }
@@ -89,4 +108,34 @@ p#score-el{
 
 .black{
     color:black;
+}
+
+.winner-gameplan{
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.winner-section{
+    width: 400px; 
+    height: 400px; 
+    background-image: url('images/winner.png'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.the-winner-is{
+    margin-bottom: -15px;
+}
+
+.player-winner-text{
+    text-align: center;
+    margin-bottom: 114px;
+    color: gold;
+    margin-top: 20px;
 }
