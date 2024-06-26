@@ -12,34 +12,39 @@
     <h1>Rock, paper, scissors</h1>
     <div class="center">
         <div>
-            <button id="play-el" class="pretty-button" onclick="startGame()">PLAY</button>
+            <div id="victories-limit-el">
+                <h3>Select the number of victories needed to win the game</h3>
+                <input type="number" id="user-number-el" min="1" placeholder="Enter a number">
+            </div>
+            <button id="play-el" class="pretty-button" onclick="saveNumber(); startGame()">PLAY</button>
             <button class="pretty-button hide-first" onclick="playAgain()">PLAY AGAIN</button>
         </div>
-        
     </div>
     <div class="hide">
         <div class="score">
-        <p id="score-el"></p>
-         <p><span id="player1-points-el"></span><span id="semicolon-points-id"></span><span id="player2-points-el"></span></p>
+            <p>Total victories needed to win the game: <span id="display-number-el"></span</p>
+            <p id="score-el"></p>
+            <p><span id="player1-points-el"></span><span id="semicolon-points-id"></span><span
+                    id="player2-points-el"></span></p>
         </div>
         <div class="both-players">
-        <div class="player-1-div">
-            <h2 class="player-1-div-el">PLAYER 1</h2>
-            <div id="choice-el" class="choice">
-                <p id="rock-el">1</p>
-                <p id="paper-el">2</p>
-                <p id="scissors-el">3</p>
+            <div class="player-1-div">
+                <h2 class="player-1-div-el">PLAYER 1</h2>
+                <div id="choice-el" class="choice">
+                    <p id="rock-el">1</p>
+                    <p id="paper-el">2</p>
+                    <p id="scissors-el">3</p>
+                </div>
+                <div id="hand-el"></div>
             </div>
-            <div id="hand-el"></div>
+            <div>
+                <h2 class="player-2-div-el">PLAYER 2</h2>
+                <div id="hand-elPlayer2"></div>
+            </div>
         </div>
-        <div>
-            <h2 class="player-2-div-el">PLAYER 2</h2>
-            <div id="hand-elPlayer2"></div>
+        <div class="result">
+            <div id="result-image-el"></div>
         </div>
-    </div>
-    <div class="result">
-    <div id="result-image-el"></div>
-</div>
     </div>
     <script src="index.js"></script>
 </body>

@@ -8,6 +8,13 @@ h1{
     margin-bottom: 50px;
 }
 
+p{
+    margin-bottom: 7px;
+}
+
+p#score-el{
+    margin-bottom: -6px;;
+}
 
 .center{
     display: flex;
@@ -72,6 +79,14 @@ h1{
     background-color: red;
 }
 
+.red{
+    color: red;
+}
+
 .green{
     color: green
+}
+
+.black{
+    color:black;
 }

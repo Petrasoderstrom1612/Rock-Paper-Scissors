@@ -9,6 +9,9 @@ let hideFirstEl = document.querySelector(".hide-first");
 let scoreEl = document.getElementById("score-el")
 let semicolonPointsId = document.getElementById("semicolon-points-id");
 let playEl = document.getElementById("play-el");
+let displayNumberEl = document.getElementById("display-number-el")
+let userNumberEl = document.getElementById("user-number-el")
+let victoriesLimitEl = document.getElementById("victories-limit-el")
 
 let hands = ["Rock", "Paper", "Scissors"];
 
@@ -36,10 +39,19 @@ scissorsEl.innerHTML = `<button style="border:none;background-color: #9B97A2;"><
 let selectedHand;
 let player1choice;
 let player2choice;
+let victoriesLimit
+
+function saveNumber() {
+    let userNumber = userNumberEl.value;
+    victoriesLimit = parseInt(userNumber);
+    console.log(victoriesLimit)
+    displayNumberEl.innerText = victoriesLimit;
+}
 
 function startGame() {
-    hideEl.classList.remove("hide"); //show game plan
+    victoriesLimitEl.classList.add("hide") //hide # of rounds choice
     playEl.classList.add("hide"); //hide play button
+    hideEl.classList.remove("hide"); //show game plan
     choiceEl.classList.remove("hide"); //show hand choices
     handEl.innerHTML = "";
     handElPlayer2.innerHTML = "";
@@ -75,38 +87,58 @@ let player1Points = 0;
 let player2Points = 0;
 
 function defineWinner() {
-    // TIE
-    if ((player1choice === "Rock" && player2choice === "Rock") || (player1choice === "Paper" && player2choice === "Paper") || (player1choice === "Scissors" && player2choice === "Scissors")) {
+// INDIVIDUAL GAME
+// TIE
+if ((player1choice === "Rock" && player2choice === "Rock") || (player1choice === "Paper" && player2choice === "Paper") || (player1choice === "Scissors" && player2choice === "Scissors")) {
+}
+// PLAYER 1 WINS
+else if ((player1choice === "Rock" && player2choice === "Scissors") || (player1choice === "Paper" && player2choice === "Rock") || (player1choice === "Scissors" && player2choice === "Paper")) {
+    player1Points++;
+    player1DivEl.classList.add("winner-background")
+    player2DivEl.classList.add("looser-background")
+}
+// Player 2 WINS
+else {
+    player2Points++;
+    player2DivEl.classList.add("winner-background")
+    player1DivEl.classList.add("looser-background")
+}
 
-    }
-    // PLAYER 1 WINS
-    else if ((player1choice === "Rock" && player2choice === "Scissors") || (player1choice === "Paper" && player2choice === "Rock") || (player1choice === "Scissors" && player2choice === "Paper")) {
-        player1Points++;
-        player1PointsEl.classList.add("green")
-        player1DivEl.classList.add("winner-background")
-        player2DivEl.classList.add("looser-background")
-    }
-    // Player 2 WINS
-    else {
-        player2Points++;
-        player2PointsEl.classList.add("green")
-        player2DivEl.classList.add("winner-background")
-        player1DivEl.classList.add("looser-background")
-    }
+player1PointsEl.classList.remove("red", "green", "black");
+player2PointsEl.classList.remove("red", "green", "black");    
+if (player1Points > player2Points){
+    player2PointsEl.classList.add("red")
+    player1PointsEl.classList.add("green")
+} else if (player2Points > player1Points){
+    player2PointsEl.classList.add("green")
+    player1PointsEl.classList.add("red")
+} else if (player2Points === player1Points) {
+    player2PointsEl.classList.add("black")
+    player1PointsEl.classList.add("black")
+}
 
-    scoreEl.innerText = "Score"
-    semicolonPointsId.innerHTML = " : ";
-    player1PointsEl.innerHTML = player1Points;
-    player2PointsEl.innerHTML = player2Points;
-    hideFirstEl.classList.remove("hide-first") //show play again button
+scoreEl.innerText = "Score"
+semicolonPointsId.innerHTML = " : ";
+player1PointsEl.innerHTML = player1Points;
+player2PointsEl.innerHTML = player2Points;
+hideFirstEl.classList.remove("hide-first") //show play again button
 
-    if (((player1choice === "Rock" && player2choice === "Scissors") || (player1choice === "Scissors" && player2choice === "Rock"))) {
-        resultImageEl.innerHTML = `<h2>RESULT</h2><p>Rock wins over Scissors</p><img alt="Rock wins over Scissors" src="./images/scissors-lost.png"/>`;
-    } else if (((player1choice === "Paper" && player2choice === "Rock") || (player1choice === "Rock" && player2choice === "Paper"))) {
-        resultImageEl.innerHTML = `<h2>RESULT</h2><p>Paper wins over Rock</p><img alt="Paper wins over Rock" src="./images/rock-lost.png"/>`;
-    } else if (((player1choice === "Scissors" && player2choice === "Paper") || (player1choice === "Paper" && player2choice === "Scissors"))) {
-        resultImageEl.innerHTML = `<h2>RESULT</h2><p>Scissors win over Paper</p><img alt="Scissors win over Paper" src="./images/paper-lost.png"/>`;
-    }
+if (((player1choice === "Rock" && player2choice === "Scissors") || (player1choice === "Scissors" && player2choice === "Rock"))) {
+    resultImageEl.innerHTML = `<h2>RESULT</h2><p>Rock wins over Scissors</p><img alt="Rock wins over Scissors" src="./images/scissors-lost.png"/>`;
+} else if (((player1choice === "Paper" && player2choice === "Rock") || (player1choice === "Rock" && player2choice === "Paper"))) {
+    resultImageEl.innerHTML = `<h2>RESULT</h2><p>Paper wins over Rock</p><img alt="Paper wins over Rock" src="./images/rock-lost.png"/>`;
+} else if (((player1choice === "Scissors" && player2choice === "Paper") || (player1choice === "Paper" && player2choice === "Scissors"))) {
+    resultImageEl.innerHTML = `<h2>RESULT</h2><p>Scissors win over Paper</p><img alt="Scissors win over Paper" src="./images/paper-lost.png"/>`;
+}
+
+if (victoriesLimit === player1Points || victoriesLimit === player2Points){
+gameOver()
+}
+}
+
+
+function gameOver(){
+    console.log("finished")
     
 }
 
@@ -114,8 +146,6 @@ function playAgain() {
     selectedHand = null;
     player1choice = null;
     player2choice = null;
-    player1PointsEl.classList.remove("green")
-    player2PointsEl.classList.remove("green")
     player1DivEl.classList.remove("winner-background", "looser-background");
     player2DivEl.classList.remove("winner-background", "looser-background");
     startGame(); // Reset game state
