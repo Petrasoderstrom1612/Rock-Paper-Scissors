@@ -9,6 +9,7 @@ let hideFirstEl = document.querySelector(".hide-first");
 let scoreEl = document.getElementById("score-el")
 let semicolonPointsId = document.getElementById("semicolon-points-id");
 let playEl = document.getElementById("play-el");
+let playAgainEl = document.getElementById("play-again-el")
 let displayNumberEl = document.getElementById("display-number-el")
 let resultImageEl = document.getElementById("result-image-el");
 let player1DivEl = document.querySelector(".player-1-div-el")
@@ -21,6 +22,7 @@ let victoriesEl = document.getElementById("victories-el")
 let gamePlanEl = document.getElementById("game-plan-el")
 let winnerNrEl = document.getElementById("winner-nr-el")
 let winnerGameplanEl = document.getElementById("winner-gameplan-el")
+let noneEl = document.getElementById("none-el")
 
 let hands = ["Rock", "Paper", "Scissors"];
 let player1Points = 0;
@@ -65,6 +67,10 @@ function startGame() {
     playEl.classList.add("hide"); //hide play button
     hideEl.classList.remove("hide"); //show game plan
     choiceEl.classList.remove("hide"); //show hand choices
+    noneEl.classList.remove("none")
+    playAgainEl.classList.remove("none")
+    gamePlanEl.classList.remove("hide")
+    victoriesEl.classList.remove("hide")
     handEl.innerHTML = "";
     handElPlayer2.innerHTML = "";
     resultImageEl.innerHTML = "";
@@ -150,15 +156,29 @@ function gameOver(){
     } else {
         winnerNrEl.innerHTML = "2"
     }
+    playAgainEl.classList.add("none")
 }
 
 function playAgain() {
     selectedHand = null;
     player1choice = null;
     player2choice = null;
-    // victoriesEl.classList.remove("hide");
-    // gamePlanEl.classList.remove("hide")
     player1DivEl.classList.remove("winner-background", "looser-background");
     player2DivEl.classList.remove("winner-background", "looser-background");
     startGame(); // Reset game state
+}
+
+function reset(){
+    player1Points = 0
+    player2Points = 0
+    player1PointsEl.innerHTML = player1Points;
+    player2PointsEl.innerHTML = player2Points;
+    player1PointsEl.classList.remove("red", "green", "black");
+    player2PointsEl.classList.remove("red", "green", "black");    
+    player1DivEl.classList.remove("winner-background", "looser-background");
+    player2DivEl.classList.remove("winner-background", "looser-background");
+    winnerGameplanEl.classList.add("hide")
+    noneEl.classList.add("none")
+    victoriesLimitEl.classList.remove("hide")
+    playEl.classList.remove("hide")
 }

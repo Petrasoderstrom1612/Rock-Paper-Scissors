@@ -38,6 +38,10 @@ p#score-el{
     display: none !important;
 }
 
+.none{
+    display: none !important;
+}
+
 .hide-first{
     display: none !important;
 }

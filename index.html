@@ -17,15 +17,18 @@
                 <input type="number" class="modern-input" id="user-number-el" min="1" placeholder="Enter a number">
             </div>
             <button id="play-el" class="pretty-button" onclick="saveNumber(); startGame()">PLAY</button>
-            <button class="pretty-button hide-first" onclick="playAgain()">PLAY AGAIN</button>
+            <button id="play-again-el" class="pretty-button hide-first" onclick="playAgain()">PLAY AGAIN</button>
         </div>
     </div>
     <div class="hide">
-        <div class="score">
-            <p id="victories-el">Total victories needed to win the game: <span id="display-number-el"></span< /p>
-                    <p id="score-el"></p>
-                    <p><span id="player1-points-el"></span><span id="semicolon-points-id"></span><span
-                            id="player2-points-el"></span></p>
+        <div id="none-el" class="score">
+            <p id="victories-el">Total victories needed to win the game: <span id="display-number-el"></span></p>
+            <p id="score-el"></p>
+            <p>
+                <span id="player1-points-el"></span>
+                <span id="semicolon-points-id"></span>
+                <span id="player2-points-el"></span>
+            </p>
         </div>
         <div id="game-plan-el">
             <div class="both-players">
@@ -55,6 +58,7 @@
             <h1 class="player-winner-text">Player <span id="winner-nr-el"></span></h1>
             </div>
         </div>
+        <button class="pretty-button" onclick="reset()">RESET</button>
     </div>
     <script src="index.js"></script>
 </body>
