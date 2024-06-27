@@ -143,3 +143,14 @@ p#score-el{
     color: gold;
     margin-top: 20px;
 }
+
+.player-1-div-el{
+    text-align: center;
+    border-radius: 12px;
+}
+
+.player-2-div-el{
+    padding-left: 6px;
+    padding-right: 6px;
+    border-radius: 12px;
+}
