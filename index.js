@@ -134,11 +134,11 @@ player2PointsEl.innerHTML = player2Points;
 hideFirstEl.classList.remove("hide-first") //show play again button
 
 if (((player1choice === "Rock" && player2choice === "Scissors") || (player1choice === "Scissors" && player2choice === "Rock"))) {
-    resultImageEl.innerHTML = `<h2>RESULT</h2><p>Rock wins over Scissors</p><img alt="Rock wins over Scissors" src="./images/scissors-lost.png"/>`;
+    resultImageEl.innerHTML = `<h2>RESULT</h2><p>Rock wins over scissors</p><img alt="Rock wins over Scissors" src="./images/scissors-lost.png"/>`;
 } else if (((player1choice === "Paper" && player2choice === "Rock") || (player1choice === "Rock" && player2choice === "Paper"))) {
-    resultImageEl.innerHTML = `<h2>RESULT</h2><p>Paper wins over Rock</p><img alt="Paper wins over Rock" src="./images/rock-lost.png"/>`;
+    resultImageEl.innerHTML = `<h2>RESULT</h2><p>Paper wins over rock</p><img alt="Paper wins over Rock" src="./images/rock-lost.png"/>`;
 } else if (((player1choice === "Scissors" && player2choice === "Paper") || (player1choice === "Paper" && player2choice === "Scissors"))) {
-    resultImageEl.innerHTML = `<h2>RESULT</h2><p>Scissors win over Paper</p><img alt="Scissors win over Paper" src="./images/paper-lost.png"/>`;
+    resultImageEl.innerHTML = `<h2>RESULT</h2><p>Scissors win over paper</p><img alt="Scissors win over Paper" src="./images/paper-lost.png"/>`;
 }
 
 if (victoriesLimit === player1Points || victoriesLimit === player2Points){
