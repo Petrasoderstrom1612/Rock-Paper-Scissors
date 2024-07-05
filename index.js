@@ -23,10 +23,14 @@ let gamePlanEl = document.getElementById("game-plan-el")
 let winnerNrEl = document.getElementById("winner-nr-el")
 let winnerGameplanEl = document.getElementById("winner-gameplan-el")
 let noneEl = document.getElementById("none-el")
+let totalSummaryEl = document.getElementById("total-summary-el")
 
 let hands = ["Rock", "Paper", "Scissors"];
 let player1Points = 0;
 let player2Points = 0;
+
+let totaltVictoriesPlayer1 = 0
+let totalGamesPlayed = 0
 
 // PLAYER 1
 rockEl.addEventListener("click", () => {
@@ -142,7 +146,11 @@ if (((player1choice === "Rock" && player2choice === "Scissors") || (player1choic
 }
 
 if (victoriesLimit === player1Points || victoriesLimit === player2Points){
+    totalGamesPlayed ++
   gameOver()
+  if (player1Points > player2Points) {
+    totaltVictoriesPlayer1 ++
+  }
   } 
 }
 
@@ -152,9 +160,9 @@ function gameOver(){
     gamePlanEl.classList.add("hide")
     winnerGameplanEl.classList.remove("hide")
     if(player1Points > player2Points){
-        winnerNrEl.innerHTML = "1"
+        winnerNrEl.innerHTML = "Player 1"
     } else {
-        winnerNrEl.innerHTML = "2"
+        winnerNrEl.innerHTML = "Computer"
     }
     playAgainEl.classList.add("none")
 }
@@ -181,4 +189,11 @@ function reset(){
     noneEl.classList.add("none")
     victoriesLimitEl.classList.remove("hide")
     playEl.classList.remove("hide")
+    totalSummaryEl.textContent = `Games won per sets ${totaltVictoriesPlayer1}/${totalGamesPlayed}`
+}
+
+function annulateAll(){
+    totaltVictoriesPlayer1 = 0
+    totalGamesPlayed = 0
+    reset()
 }
