@@ -48,9 +48,9 @@ scissorsEl.addEventListener("click", () => {
     showHand(selectedHand);
 });
 
-rockEl.innerHTML = `<button style="border:none;background-color: #9B97A2;"><img alt=${hands[0]} src="./images/${hands[0]}.png"></button>`;
-paperEl.innerHTML = `<button style="border:none;background-color: #9B97A2;"><img alt=${hands[1]} src="./images/${hands[1]}.png"></button>`;
-scissorsEl.innerHTML = `<button style="border:none;background-color: #9B97A2;"><img alt=${hands[2]} src="./images/${hands[2]}.png"></button>`;
+rockEl.innerHTML = `<button class="choice-button" style="border:none;background-color: #9B97A2;"><img alt=${hands[0]} src="./images/${hands[0]}.png"></button>`;
+paperEl.innerHTML = `<button class="choice-button" style="border:none;background-color: #9B97A2;"><img alt=${hands[1]} src="./images/${hands[1]}.png"></button>`;
+scissorsEl.innerHTML = `<button class="choice-button" style="border:none;background-color: #9B97A2;"><img alt=${hands[2]} src="./images/${hands[2]}.png"></button>`;
 
 let selectedHand;
 let player1choice;
