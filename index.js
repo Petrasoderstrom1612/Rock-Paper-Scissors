@@ -48,9 +48,9 @@ scissorsEl.addEventListener("click", () => {
     showHand(selectedHand);
 });
 
-rockEl.innerHTML = `<button class="choice-button" style="border:none;background-color: #9B97A2;"><img alt=${hands[0]} src="./images/${hands[0]}.png"></button>`;
-paperEl.innerHTML = `<button class="choice-button" style="border:none;background-color: #9B97A2;"><img alt=${hands[1]} src="./images/${hands[1]}.png"></button>`;
-scissorsEl.innerHTML = `<button class="choice-button" style="border:none;background-color: #9B97A2;"><img alt=${hands[2]} src="./images/${hands[2]}.png"></button>`;
+rockEl.innerHTML = `<button class="choice-button" style="border:none;background-color: #9B97A2;"><img class="${hands[0]}" alt=${hands[0]} src="./images/${hands[0]}.png"></button>`;
+paperEl.innerHTML = `<button class="choice-button" style="border:none;background-color: #9B97A2;"><img class="${hands[1]}" alt=${hands[1]} src="./images/${hands[1]}.png"></button>`;
+scissorsEl.innerHTML = `<button class="choice-button" style="border:none;background-color: #9B97A2;"><img class="${hands[2]}" alt=${hands[2]} src="./images/${hands[2]}.png"></button>`;
 
 let selectedHand;
 let player1choice;
@@ -83,7 +83,7 @@ function startGame() {
 function showHand(selectedHand) {
     choiceEl.classList.add("hide"); //hide hand choices
     player1choice = selectedHand;
-    handEl.innerHTML = `<img alt=${player1choice} src="./images/${player1choice}.png">`;
+    handEl.innerHTML = `<img class="${player1choice}" alt=${player1choice} src="./images/${player1choice}.png">`;
     showHandPlayer2(); //Activating player 2 computer to play
     defineWinner();
 }
@@ -96,7 +96,7 @@ function generateHandPlayer2() {
 
 function showHandPlayer2() {
     player2choice = generateHandPlayer2();
-    handElPlayer2.innerHTML = `<img alt=${player2choice} src="./images/${player2choice}.png">`;
+    handElPlayer2.innerHTML = `<img class="computer-hand" alt=${player2choice} src="./images/${player2choice}.png">`;
 }
 
 
@@ -138,11 +138,11 @@ player2PointsEl.innerHTML = player2Points;
 hideFirstEl.classList.remove("hide-first") //show play again button
 
 if (((player1choice === "Rock" && player2choice === "Scissors") || (player1choice === "Scissors" && player2choice === "Rock"))) {
-    resultImageEl.innerHTML = `<h2>RESULT</h2><p>Rock wins over scissors</p><img alt="Rock wins over Scissors" src="./images/scissors-lost.png"/>`;
+    resultImageEl.innerHTML = `<h2>RESULT</h2><p>Rock wins over scissors</p><img class="result-img" alt="Rock wins over Scissors" src="./images/scissors-lost.png"/>`;
 } else if (((player1choice === "Paper" && player2choice === "Rock") || (player1choice === "Rock" && player2choice === "Paper"))) {
-    resultImageEl.innerHTML = `<h2>RESULT</h2><p>Paper wins over rock</p><img alt="Paper wins over Rock" src="./images/rock-lost.png"/>`;
+    resultImageEl.innerHTML = `<h2>RESULT</h2><p>Paper wins over rock</p><img class="result-img" alt="Paper wins over Rock" src="./images/rock-lost.png"/>`;
 } else if (((player1choice === "Scissors" && player2choice === "Paper") || (player1choice === "Paper" && player2choice === "Scissors"))) {
-    resultImageEl.innerHTML = `<h2>RESULT</h2><p>Scissors win over paper</p><img alt="Scissors win over Paper" src="./images/paper-lost.png"/>`;
+    resultImageEl.innerHTML = `<h2>RESULT</h2><p>Scissors win over paper</p><img class="result-img" alt="Scissors win over Paper" src="./images/paper-lost.png"/>`;
 }
 
 if (victoriesLimit === player1Points || victoriesLimit === player2Points){

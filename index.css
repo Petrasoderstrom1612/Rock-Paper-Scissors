@@ -189,6 +189,21 @@ p#score-el{
 
 /* Media Queries for Mobile Responsiveness */
 @media (max-width: 676px) {
+    .hand-elPlayer2{
+        width:55px;
+    }
+
+    .result-img{
+        width:110px; 
+        max-height: 105px;
+
+    }
+
+    .computer-hand{
+        width:55px;
+    }
+    
+
     .pretty-button {
         padding: 10px 20px;
         font-size: 14px;
@@ -220,5 +235,17 @@ p#score-el{
 
     .player-1-div-el, .player-2-div-el {
         font-size: 16px;
+    }
+
+    .Rock{
+        width:59px;
+    }
+
+    .Paper{
+        width:55px;
+    }
+
+    .Scissors{
+        width:46px;
     }
 }
