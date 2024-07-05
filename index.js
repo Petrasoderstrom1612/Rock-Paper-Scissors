@@ -189,7 +189,7 @@ function reset(){
     noneEl.classList.add("none")
     victoriesLimitEl.classList.remove("hide")
     playEl.classList.remove("hide")
-    totalSummaryEl.textContent = `Games won per sets ${totaltVictoriesPlayer1}/${totalGamesPlayed}`
+    totalSummaryEl.textContent = `Total of sets won ${totaltVictoriesPlayer1}/${totalGamesPlayed}`
 }
 
 function annulateAll(){
